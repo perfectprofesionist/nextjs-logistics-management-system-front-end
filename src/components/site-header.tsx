@@ -4,6 +4,7 @@ import { Button } from "./ui/button"
 import { Separator } from "./ui/separator"
 import { SidebarTrigger } from "./ui/sidebar"
 import { usePathname } from "next/navigation"
+import Link from "next/link"
 
 function Breadcrumbs() {
   const pathname = usePathname()
@@ -33,12 +34,12 @@ function Breadcrumbs() {
             <li key={seg} className="flex items-center">
               {idx > 0 && <span className="mx-1">/</span>}
               {idx < segments.length - 1 ? (
-                <a
+                <Link
                   href={hrefs[idx]}
                   className="hover:underline font-medium text-foreground capitalize"
                 >
                   {seg.replace(/-/g, " ")}
-                </a>
+                </Link>
               ) : (
                 <span className="font-medium text-foreground capitalize">
                   {seg.replace(/-/g, " ")}

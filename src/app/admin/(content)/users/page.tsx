@@ -13,7 +13,9 @@ type UserApiResponse = {
   [key: string]: unknown;
 };
 
+// Match the UserTableRow type to what UserTable expects (id: string | number)
 type UserTableRow = {
+  id: string | number;
   name: string;
   email: string;
   organization: string;
@@ -34,6 +36,7 @@ const Users = () => {
         // Map the response to only include name, email, organization.name, role.name
         const mappedData: UserTableRow[] = Array.isArray(users)
           ? users.map((user: UserApiResponse) => ({
+              id: user.id ?? "",
               name: user.name ?? "",
               email: user.email ?? "",
               organization: user.organization?.name ?? "",
